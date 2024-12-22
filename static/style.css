@@ -1,0 +1,27 @@
+body{
+    background: white;
+    color: black;
+
+}
+
+main{
+    margin: 1%;
+
+}
+
+.about{
+    background: rgb(152,44,121);
+    padding: 10px;
+    color: black;
+}
+
+.button{
+    background: linear-gradient(purple, yellow);
+    padding 10px;
+    margin: 20px;
+    border: 2px solid black;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 10px
+}

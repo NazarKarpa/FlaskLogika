@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+        <title>{{article[1]}} - Logika</title>
+{% endblock title %}
+
+{% block content %}
+    <main class="container">
+      <h1 class="my-1">{{article[1]}}</h1>
+
+      <img src="{{ url_for('static', filename='img/'+article[3]) }}" class="card-fluid my-1" alt="...">
+      <p>{{article[2]}}</p>
+      <small>Опубліковано: {{article[4]}}</small>
+    </main>
+{% endblock content %}
