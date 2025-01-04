@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}
+        <title>{{article[1]}} - Logika</title>
+{% endblock title %}
+
+{% block content %}
+    <main class="container">
+        <div class="row">
+            <div class="col col-md-4">
+                <img style="max-height: 500px" src="{{ url_for('static', filename='img/'+article[6]) }}" class="img-fluid my-1" alt="...">
+
+            </div>
+            <div class="col col-md-8">
+                <h1 class="my-1">{{article[1]}}</h1>
+
+
+
+
+                {% for p in article[2].split('\n')%}
+
+
+                <p>{{p}}</p>
+
+
+                {% endfor %}
+                <h4>Ціна {{article[3]}} грн</h4>
+                <button type="button" class="btn btn-primary">Замовити</button>
+
+            </div>
+
+        </div>
+        <small>Опубліковано: {{article[5]}}</small>
+    </main>
+{% endblock content %}
