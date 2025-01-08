@@ -10,15 +10,19 @@
         <form action="" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="articleTitle" class="form-label">ПІБ</label>
-                <input required name="title" type="text" class="form-control" id="articleTitle" placeholder="Введіть ПІБ">
+                <input required name="fullname" type="text" class="form-control" id="articleTitle" placeholder="Введіть ПІБ">
             </div>
             <div class="mb-3">
                 <label for="articleTitle" class="form-label">Email</label>
-                <input required name="title" type="text" class="form-control" id="articleTitle1" placeholder="Введіть Email">
+                <input required name="email" type="text" class="form-control" id="articleTitle" placeholder="Введіть Email">
             </div>
             <div class="mb-3">
                 <label for="articleTitle" class="form-label">Number phone</label>
-                <input required name="title" type="text" class="form-control" id="articleTitle2" placeholder="Введіть номер телефону">
+                <input required name="phone" type="tel" class="form-control" id="articleTitle" placeholder="Введіть номер телефону">
+            </div>
+            <div class="mb-3">
+                <label for="articleTitle" class="form-label">quantity</label>
+                <input required name="quantity" type="number" class="form-control" id="articleTitle" value="1" min="1" max="20">
             </div>
 
            <!-- <select required name='articles' class="form-select" aria-label="Default select example">
@@ -29,7 +33,7 @@
             </select>-->
             <div class="mb-3">
           <label for="exampleFormControlTextarea1" class="form-label">Коментар-Побажання</label>
-          <textarea required name='content' class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+          <textarea required name='comment' class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
             </div>
             <button type="submit" class="btn btn-lg btn-primary mt-4 mb-5">Замовити</button>
         </form>

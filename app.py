@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, redirect, url_for
 from dotenv import load_dotenv
 from db_scripts import *
 import os
@@ -6,7 +6,7 @@ load_dotenv()
 
 
 app = Flask(__name__)  # Створюємо веб–додаток Flask
-
+app.secret_key = os.getenv('SECRET_KEY')
 db = DataBaseManager('orders_db.db')
 
 IMG_PATH = os.path.dirname(__file__) + os.sep + 'static' + os.sep + 'img'
@@ -22,9 +22,9 @@ def index():
     articles = db.get_all_articles()
     return render_template("index.html", articles=articles) # html-сторінка, що повертається у браузер
 
-@app.route('/articles/<int:article_id>')
-def article_page(article_id):
-    article = db.get_article(article_id)
+@app.route('/dishes/<int:item_id>')
+def article_page(item_id):
+    article = db.get_article(item_id)
     return render_template('article_page.html', article=article)
 
 @app.route('/category/<int:category_id>')
@@ -33,16 +33,17 @@ def category_page(category_id):
     return render_template('index.html', articles=article)
 
 
-@app.route('/articles/new', methods=['GET', 'POST'])
+@app.route('/order/new', methods=['GET', 'POST'])
 def new_article():
+    item_id = request.args.get('item_id')
     if request.method == 'POST':#якщо користувач надсилає форму
-       # if request.form['category'] != 'Виберіть категорію':
-         #   image = request.files['image'] #получаємо файл картинки
-         #   image.save(IMG_PATH + image.filename)
-         #   db.add_article(request.form['title'], request.form['content'], image.filename, 1, request.form['category'])
-         flash('Ми вам передзвонимо', 'alert-success')
-        #else:
-         #flash('Заповніть всі поля і статтю вибріть')
+
+
+        db.add_article(request.form['fullname'], request.form['email'], request.form['phone'], request.form['quantity'], item_id, request.form['comment'] )
+
+        flash('Ми передзвонимо', 'alert-success')
+        return redirect(url_for('index'))
+
     return render_template('new_article.html')
 
 @app.route("/search")  # Вказуємо url-адресу для виклику функції
