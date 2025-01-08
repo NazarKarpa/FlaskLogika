@@ -49,10 +49,10 @@ class DataBaseManager:
         return data
 
 
-    def add_article(self, title,content, image, user_id, category_id):
+    def add_article(self, name, email, number_phone):
         self.open()
-        self.cursor.execute('''INSERT INTO articles(title,content, image, user_id, category_id)
-                            VALUES(?,?,?,?,?)''', [title,content, image, user_id, int(category_id)])
+        self.cursor.execute('''INSERT INTO orders(name,email, number_phone)
+                            VALUES(?,?,?)''', [name, email, number_phone])
         self.conn.commit()
         self.close()
         return

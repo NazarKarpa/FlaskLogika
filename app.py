@@ -6,7 +6,7 @@ load_dotenv()
 
 
 app = Flask(__name__)  # Створюємо веб–додаток Flask
-app.secret_key = os.getenv('SECRET_KEY')
+
 db = DataBaseManager('orders_db.db')
 
 IMG_PATH = os.path.dirname(__file__) + os.sep + 'static' + os.sep + 'img'
@@ -36,13 +36,13 @@ def category_page(category_id):
 @app.route('/articles/new', methods=['GET', 'POST'])
 def new_article():
     if request.method == 'POST':#якщо користувач надсилає форму
-        if request.form['category'] != 'Виберіть категорію':
-            image = request.files['image'] #получаємо файл картинки
-            image.save(IMG_PATH + image.filename)
-            db.add_article(request.form['title'], request.form['content'], image.filename, 1, request.form['category'])
-            flash('Статтю додано', 'alert-success')
-        else:
-            flash('Заповніть всі поля і статтю вибріть')
+       # if request.form['category'] != 'Виберіть категорію':
+         #   image = request.files['image'] #получаємо файл картинки
+         #   image.save(IMG_PATH + image.filename)
+         #   db.add_article(request.form['title'], request.form['content'], image.filename, 1, request.form['category'])
+         flash('Ми вам передзвонимо', 'alert-success')
+        #else:
+         #flash('Заповніть всі поля і статтю вибріть')
     return render_template('new_article.html')
 
 @app.route("/search")  # Вказуємо url-адресу для виклику функції

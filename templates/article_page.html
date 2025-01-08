@@ -6,11 +6,11 @@
 {% block content %}
     <main class="container">
         <div class="row">
-            <div class="col col-md-4">
-                <img style="max-height: 500px" src="{{ url_for('static', filename='img/'+article[6]) }}" class="img-fluid my-1" alt="...">
+            <div class="col col-md-6">
+                <img style="max-height: 700px" src="{{ url_for('static', filename='img/'+article[6]) }}" class="img-fluid my-1" alt="...">
 
             </div>
-            <div class="col col-md-8">
+            <div class="col col-md-4">
                 <h1 class="my-1">{{article[1]}}</h1>
 
 
@@ -24,11 +24,11 @@
 
                 {% endfor %}
                 <h4>Ціна {{article[3]}} грн</h4>
-                <button type="button" class="btn btn-primary">Замовити</button>
+                <a class="btn btn-primary stretched-link" href="{{ url_for('new_article', article_id=article[0])}}" role="button">Замовити</a>
 
             </div>
 
         </div>
-        <small>Опубліковано: {{article[5]}}</small>
+
     </main>
 {% endblock content %}
